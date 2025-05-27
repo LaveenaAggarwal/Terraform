@@ -100,7 +100,8 @@ resource "aws_instance" "server" {
         "sudo pip3 install -r requirements.txt",
 
         # Run the Flask app in background
-        "sudo python3 main.py &"
+        "sleep 5",
+        "nohup sudo python3 main.py > flask.log 2>&1 &"
      ]
   }
 }
