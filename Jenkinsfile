@@ -3,13 +3,14 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = 'us-east-2'
-        AWS_ACCESS_KEY_ID     = credentials('your-aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('your-aws-secret-access-key')
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
     stages {
         stage('Checkout') {
             steps {
+                cleanWs()
                 checkout scm
             }
         }
@@ -27,11 +28,6 @@ pipeline {
             steps {
                 sh 'terraform apply'
             }
-        }
-    }
-    post {
-        always {
-            cleanWs()
         }
     }
 }
