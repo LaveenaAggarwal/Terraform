@@ -71,7 +71,7 @@ resource "aws_instance" "server" {
   subnet_id = aws_subnet.mySubnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
   tags = {
-    Name = "my-instance"
+    Name = "my-instance-test"
   }
 
 # How to connect to an EC2 instance using SSH with Terraform
