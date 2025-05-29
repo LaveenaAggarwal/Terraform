@@ -73,8 +73,15 @@ resource "aws_instance" "server" {
   tags = {
     Name = "my-instance-test"
   }
+}
 
-# How to connect to an EC2 instance using SSH with Terraform
+resource "null_resource" "repo" {
+  triggers = {
+    always_run = timestamp()
+  }
+  depends_on = [aws_instance.server]
+
+  # How to connect to an EC2 instance using SSH with Terraform
   connection {
     type = "ssh"
     user = "ec2-user"
