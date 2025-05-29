@@ -88,7 +88,7 @@ resource "aws_instance" "server" {
       "echo 'Welcome !!!!'",
       "sudo yum update -y",
       "sudo yum install -y git python3 python3-pip",
-      "cd /home/ec2-user && if [ -d 'Python' ]; then cd Python && git pull; else git clone https://github.com/LaveenaAggarwal/Python.git; fi",
+      "cd /home/ec2-user && if [ -d 'Python' ]; then cd Python && git pull origin develop; else git clone https://github.com/LaveenaAggarwal/Python.git; fi",
       "cd /home/ec2-user/Python/Python-Project1 && sudo pip3 install -r requirements.txt",
       "cd /home/ec2-user/Python/Python-Project1 && sudo python3 main.py &"
     ]
