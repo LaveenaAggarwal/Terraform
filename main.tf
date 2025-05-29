@@ -82,17 +82,15 @@ resource "aws_instance" "server" {
     host = self.public_ip
   }
 
-# inline is used to specify a list of shell commands that Terraform runs directly on the remote instance in sequence.
-provisioner "remote-exec" {
-  inline = [
-    "echo 'Welcome !!!!'",
-    "sudo yum update -y",
-    "sudo yum install -y git python3 python3-pip -y",
-    "cd /home/ec2-user && git clone https://github.com/LaveenaAggarwal/flask-app.git -b develop",
-    "sudo pip3 install -r requirements.txt",
-    "sudo python3 main.py &"
-  ]
- }
+  # inline is used to specify a list of shell commands that Terraform runs directly on the remote instance in sequence.
+  provisioner "remote-exec" {
+    inline = [
+      "echo 'Welcome !!!!'",
+      "sudo yum update -y",
+      "sudo yum install -y git python3 python3-pip -y",
+      "cd /home/ec2-user && git clone https://github.com/LaveenaAggarwal/flask-app.git -b develop",
+      "sudo pip3 install -r requirements.txt",
+      "nohup python3 main.py &"
+    ]
+  }
 }
-
-
