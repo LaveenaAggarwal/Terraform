@@ -89,8 +89,8 @@ resource "aws_instance" "server" {
       "sudo yum update -y",
       "sudo yum install -y git python3 python3-pip",
       "cd /home/ec2-user && git clone https://github.com/LaveenaAggarwal/flask-app.git -b develop",
-      "cd /home/ec2-user/flask-app && sudo pip3 install -r requirements.txt",
-      "cd /home/ec2-user/flask-app && nohup sudo python3 main.py > app.log 2>&1 &"
+      "cd flask-app && sudo pip3 install -r requirements.txt",
+      "sudo python3 main.py"
     ]
   }
 }
