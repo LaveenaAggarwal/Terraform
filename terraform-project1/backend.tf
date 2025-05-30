@@ -3,5 +3,6 @@ terraform {
     bucket = "laveena-terraform-state-bucket"
     key = "terraform/state"
     region = "us-east-2"
+    dynamodb_table = "terraform-locks"
   }
 }
