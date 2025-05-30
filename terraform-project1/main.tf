@@ -86,7 +86,7 @@ resource "null_resource" "repo" {
     type = "ssh"
     user = "ec2-user"
     private_key = file("C:/Users/Laveena/.ssh/id_rsa")
-    host = aws_instance.server.public_ipexit
+    host = aws_instance.server.public_ip
   }
 
   # inline is used to specify a list of shell commands that Terraform runs directly on the remote instance in sequence.
@@ -96,8 +96,8 @@ resource "null_resource" "repo" {
       "sudo yum update -y",
       "sudo yum install -y git python3 python3-pip",
       "cd /home/ec2-user && if [ -d 'Python' ]; then cd Python && git pull origin develop; else git clone https://github.com/LaveenaAggarwal/Python.git; fi",
-      "cd Python-Project1 && sudo pip3 install -r requirements.txt",
-      "sudo python3 main.py &"
+      "cd /home/ec2-user/Python/Python-Project1 && sudo pip3 install -r requirements.txt",
+      "cd /home/ec2-user/Python/Python-Project1 && sudo python3 main.py &"
     ]
   }
 }
